@@ -48,28 +48,12 @@ class UpdateItem extends Component {
 
   // Handle change to grab the data
   handleChange = async e => {
-    const { name, type, value, files } = e.target;
+    const { name, type, value } = e.target;
     const val = type === "number" ? parseFloat(value) : value;
 
-    // JavaScript FormData
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "sickfits");
-    // connecting with Cloudinary API
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dz1ikkkiy/image/upload",
-      {
-        method: "POST",
-        body: data
-      }
-    );
-    // fetching data from cloudinary and convert it to JSON
-    const file = await res.json();
     // Update State
     this.setState({
-      [name]: val,
-      image: file.secure_url,
-      largeImage: file.eager[0].secure_url
+      [name]: val
     });
   };
   // Update Item
@@ -84,6 +68,32 @@ class UpdateItem extends Component {
     // after updating, Redirect to Homepage
     Router.push({
       pathname: "/"
+    });
+  };
+
+  // Upload Image Files
+  uploadFile = async e => {
+    // grab the targeted files
+    const files = e.target.files;
+    // JavaScript FormData
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "sickfits");
+    // connecting with Cloudinary API
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dz1ikkkiy/image/upload",
+      {
+        method: "POST",
+        body: data
+      }
+    );
+    // fetching data from cloudinary and convert it to JSON
+    const file = await res.json();
+    console.log(file);
+    // Update State
+    this.setState({
+      image: file.secure_url,
+      largeImage: file.eager[0].secure_url
     });
   };
 
@@ -120,7 +130,7 @@ class UpdateItem extends Component {
                         id="image"
                         defaultValue={data.item.image}
                         required
-                        onChange={this.handleChange}
+                        onChange={this.uploadFile}
                       />
                       {this.state.image && (
                         <img
