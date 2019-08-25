@@ -1,0 +1,39 @@
+Courses: Advance React with GraphQL | @WesBos
+
+Date: 18.08.2019 | Concept Cleared:
+
+1. Next.js
+    # Routing
+    # Linking
+    # Custom _app.js
+    # Custom _document.js
+    # Fixing Server-side-rendering issue by adding _document.js
+    1.Added NProgress.js to make stylish progressbar
+    2.Added Styled Component for custom css on Js
+
+2. Server Creation
+    # Prisma Initialization
+    # Connecting Terminal with Prisma by "Prisma Login"
+    # Created a Prisma Server for 'Sick-fits' Application
+    # Updated prisma.yml and variables.env
+    # Created a database file importing 'prisma-binding'
+    # GraphQL Configuration (.graphqlconfig.yml)
+    # Server Created using GraphQL-Yoga
+    # Created 'datamodel.graphql'
+    # Created and Updated 'src/schema.graphql'
+
+3. Query and Mutation
+    # Learned how to Query and Mutation
+
+
+
+
+
+# REFERRENCE:
+    1. Next.js
+    2. Styled Component
+    3. NProgress.js
+    4. Nodemon
+    5. GraphQL
+    6. GraphQL-Yoga
+    7. Prisma
