@@ -4,9 +4,9 @@ import User from "./User";
 const Nav = () => (
   <NavStyles>
     <User>
-      {data => {
-        console.log(data);
-        return <p>{data ? data.me : "Not Found"}</p>;
+      {({ data: { me } }) => {
+        if (me) return <p>{me.name}</p>;
+        return <p>No user Found</p>;
       }}
     </User>
     <Link href="/items">
